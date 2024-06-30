@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .navbar {
+            width: 100%;
+        }
+        .navbar-upper {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        .navbar-upper .logo {
+            flex: 1;
+            margin: 0;
+            padding-left: 20px;
+        }
+        .navbar-upper .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 80px;
+        }
+        .navbar-upper .contact-info {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+            align-items: center;
+            font-size: 18px;
+            color: rgba(64, 64, 64, 0.513);
+            flex-wrap: wrap;
+        }
+        .navbar-upper .contact-info div {
+            margin: 10px;
+            font-size: 25px;
+            letter-spacing: 2px;
+        }
+        .navbar-upper .social-media {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+            left: -60px;
+        }
+        .navbar-upper .social-media a {
+            margin-left: 10px;
+        }
+        .navbar-upper .social-media a img {
+            margin-left: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        .navbar-upper .social-media a img:hover {
+            transform: scale(1.1);
+        }
+        .navbar-lower {
+            background-color: #d02c35;
+            padding: 15px 0;
+        }
+        .navbar-lower ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-lower ul li {
+            margin: 5px 15px;
+        }
+        .navbar-lower ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .navbar-lower ul li a:hover {
+            color: #ffcc00;
+        }
+        .book {
+            background-color: #d02c35;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border: none;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            padding: 6px auto;
+            margin-left: 0px;
+            display:block;
+            transition: background-color 0.3s ease;
+        }
+        .book:hover {
+            background-color: #f91c27;
+        }
+        .lower-section {
+            background-image: url(https://www.germanhomeopathiccentre.com/wp-content/uploads/2024/06/about-us.jpg);
+            width: 105%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: bottom center;
+            height: calc(100vh - 340px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            margin-left: -40px;
+            
+        }
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: -250px;
+            background-color: rgba(22, 22, 22, 0.958);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            display: flex;
+            flex-direction: column;
+        }
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidenav a:hover {
+            color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+        .sidenav .social-media {
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .menu-icon {
+            cursor: pointer;
+            padding: 10px;
+            font-size: 30px;
+            margin-left: auto;
+        }
+        .star-rating {
+            margin-top: auto;
+            text-align: center;
+            padding: 20px;
+        }
+        .star-rating .stars {
+            font-size: 30px;
+            color: #ddd;
+        }
+        .star-rating .stars .fas {
+            color: #ffd700;
+        }
+
+        .container {
+            max-width: 1400px;
+            flex-direction: row;
+            margin: 0 auto;
+            padding-top: 40px;
+            display: flex;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .content {
+            flex: 1;
+            
+            padding: 20px;
+        }
+        .image {
+            flex: 1;
+            flex-direction: row;
+            padding: 20px;
+        }
+        .container h1 {
+            color: #1a5f7a;
+            margin-bottom: 20px;
+            font-size: 31px;
+            font-weight: bolder;
+        }
+        .container p
+        {
+            font-size: 19px;
+            text-size-adjust: 4px;
+        }
+        .container img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 80px;
+            box-shadow: 8px 4px 8px rgba(22, 22, 22, 0.658);
+            border-radius: 3px;
+        }
+        .container1 {
+       display: flex;
+    width: 1680px;
+    margin: 20px auto;
+    background-color: #FBF2A6;
+    
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+}
+
+.left {
+    margin-right: 35px;
+    margin-left: 45px;
+}
+
+.right {
+    margin-left: 35px;
+    margin-right: 45px;
+}
+
+p {
+    line-height: 1.6;
+    color: rgb(58, 58, 58);
+    font-size: 17px;
+}
+        @media (max-width: 768px) {
+            .navbar-upper .contact-info,
+            .navbar-upper .social-media,
+            .navbar-lower {
+                display: none;
+            }
+            .menu-icon {
+                display: inline-block;
+            }
+            .lower-section {
+                background-image: url("https://static-ml6.apyhi.com/extender/2024-06-29/WEHRR8X3_output_0.webp");
+                background-size: 100% 60%;
+                position: relative;
+                left: 20px;
+                background-position: left top;
+            }
+            .container{
+                width: 100%;
+                flex-direction: column;
+                position: relative;
+                top: -200px;
+                
+            }
+            .container1 {
+                flex-direction: column;
+                width: 100vw;
+                position: relative;
+                top: -150px;
+            }
+        }
+        @media (min-width: 769px) {
+            .menu-icon {
+                display: none;
+            }
+            .navbar-upper .book-button {
+                display: inline-block;
+                margin-left: 20px;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-upper">
+            <div class="logo">
+                <img src="https://www.germanhomeopathiccentre.com/wp-content/uploads/2024/06/logo-new.png" alt="Logo">
+            </div>
+            <div class="contact-info">
+                <div>Call Us: 91 98111 18863</div>
+            </div>
+            <div class="social-media">
+                <button class="book book-button">Book Appointment</button>
+                <a href="#"><img src="https://img.icons8.com/?size=100&id=114441&format=png&color=000000" alt="Facebook" width="20"></a>
+                <a href="#"><img src="https://img.icons8.com/?size=100&id=119026&format=png&color=000000" alt="Instagram" width="20"></a>
+               
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </div>
+    <div id="mySidenav" class="sidenav" data-aos="fade-right">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <button class="book">Book Appointment</button>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Consultation</a>
+        <a href="#">Gallery</a>
+        <a href="#">Testimonials</a>
+        <a href="#">FAQ's</a>
+        <a href="#">Contacts</a>
+        <div class="social-media">
+            <a href="#"><img src="https://img.icons8.com/?size=100&id=114441&format=png&color=000000" alt="Facebook" width="40"></a>
+            <a href="#"><img src="https://img.icons8.com/?size=100&id=119026&format=png&color=000000" alt="Instagram" width="40"></a>
+        </div>
+        <div class="star-rating">
+            <p>Rate our service:</p>
+            <div class="stars">
+                <i class="far fa-star" data-rating="1"></i>
+                <i class="far fa-star" data-rating="2"></i>
+                <i class="far fa-star" data-rating="3"></i>
+                <i class="far fa-star" data-rating="4"></i>
+                <i class="far fa-star" data-rating="5"></i>
+            </div>
+        </div>
+    </div>
+    <div class="navbar-lower">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Consultation</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">FAQ's</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </div>
+    <div class="lower-section"></div>
+
+    <div class="container">
+    <div class="content">
+        <h1>About Us</h1>
+        <p>Since our inception in the <span style="font-weight: bold;">year 1994 </span>, we are counted amongst the prominent Homeopathic consultants. We are largest computer assisted clinic and pharmacy specialized in treatment for Child, Chest, Skin and Allergic disorders.</p>
+        <p>Our homeopathic center is an innovated clinic that puts forward highly advanced services for our esteemed patients. We are based in Ghaziabad, Delhi-NCR and strongly focus on providing best cure for your medical problems that too at an affordable cost. We put our best efforts in serving our customers with effective and efficient treatment support through our modernized clinic. We have carved a favorable niche for ourselves in the health industry. All the endeavors spin around promoting health of our valuable patients. We are recognized in the field of homeopathy for our results, competitive pricing and moral practice in medicine. Dr. Amit Kumar Gupta is a well known scholar, researcher, practitioner, and believe in holistic healing.</p>
+    </div>
+    <div class="image">
+        <img src="https://www.germanhomeopathiccentre.com/wp-content/uploads/2024/06/aa9dabdc-ae65-471c-ad07-1ce16f58c3a8-1024x682.jpg" alt="Award ceremony">
+    </div>
+</div>
+
+<div class="container1">
+    <div class="column left">
+        <p id="leftText"></p>
+    </div>
+    <div class="column right">
+        <p id="rightText"></p>
+    </div>
+</div>
+
+    <script>
+        function toggleMenu() {
+            var sidenav = document.getElementById("mySidenav");
+            var menuIcon = document.querySelector(".menu-icon i");
+            if (sidenav.style.left === "0px") {
+                closeNav();
+                menuIcon.classList.remove("fa-times");
+                menuIcon.classList.add("fa-bars");
+            } else {
+                openNav();
+                menuIcon.classList.remove("fa-bars");
+                menuIcon.classList.add("fa-times");
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.left = "0px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.left = "-250px";
+        }
+
+        // Star rating functionality
+        const stars = document.querySelectorAll('.stars i');
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.remove('far');
+                        s.classList.add('fas');
+                    } else {
+                        s.classList.remove('fas');
+                        s.classList.add('far');
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const leftText = `He has developed his unique way of relieving the patient of his suffering in the shortest possible time. Yet maintaining the good old efficacy of homeopathic medicines in attempting to cure the patient of the disease completely from the root. Dr Amit has done away with the age old practice of taking the details of the case of the patient for hours, asking a lot of unnecessary and irrelevant questions. He has developed what could be termed as SMART CASETAKING which means that a medical diagnosis of the case is made supported by the required investigations and then prescribed according to the diagnosis and the symptoms. Our support staff will be more than happy to take care of you.`;
+
+    const rightText = `This kind of approach has saved a lot of time for the patient and the doctor there by making it easier for the patient, where in the patient can just walk in and walk out in a short time not having to spend nearly half a day meeting the doctor. At Dr. Amit Kumar Gupta's clinic once the patient is registered, Dr. Amit becomes a family physician and whatever be the medical problem however small or serious will be taken care of by the doctor. If the problem needs to be referred to another specialist then the patient will be guided to the best in the field by the doctor himself. For patients who are getting transferred or who do not reside in Delhi NCR they may contact the doctor by phone or by email and their medicines will be couriered from the doctors clinic itself. Patients are free to call up our Clinic any time during our clinic timings.`;
+
+    document.getElementById('leftText').textContent = leftText;
+    document.getElementById('rightText').textContent = rightText;
+});
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 300,
+            duration: 1000
+        });
+    </script>
+</body>
+</html>
